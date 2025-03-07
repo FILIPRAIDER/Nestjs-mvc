@@ -22,4 +22,12 @@ export class CategoryRepository {
       throw new Error('No se pudo crear la categoría');
     }
   }
+  async deleteById(id: number): Promise<void> {
+    try {
+      await prisma.categoria.delete({ where: { ID: id } });
+    } catch (error) {
+      console.error(`Error eliminando la categoría con ID ${id}:`, error);
+      throw new Error('No se pudo eliminar la categoría');
+    }
+  }
 }

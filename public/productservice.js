@@ -1,7 +1,6 @@
 const API_URL = "https://nestjs-mvc.onrender.com";
 
 
-
 export async function fetchProducts() {
     try {
         const response = await fetch(`${API_URL}/productos`);
@@ -54,5 +53,13 @@ export async function addCategory(Nombre) {
         return await response.json();
     } catch (error) {
         console.error("Error agregando categoría:", error);
+    }
+}
+
+export async function deleteCategory(id) {
+    try {
+        await fetch(`${API_URL}/categorias/${id}`, { method: "DELETE" });
+    } catch (error) {
+        console.error("Error eliminando categoría:", error);
     }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
 import { CategoryService } from './category.service';
 
 @Controller('categorias')
@@ -13,5 +13,10 @@ export class CategoryController {
   @Post()
   create(@Body() body: { Nombre: string }) {
     return this.categoryService.crearCategoria(body.Nombre);
+  }
+
+  @Delete(':id')
+  async eliminarCategoria(@Param('id') id: number): Promise<void> {
+    return this.categoryService.eliminarCategoria(Number(id));
   }
 }

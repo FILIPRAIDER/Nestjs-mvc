@@ -23,4 +23,12 @@ export class CategoryService {
       throw new Error('No se pudo crear la categoría');
     }
   }
+  async eliminarCategoria(id: number): Promise<void> {
+    try {
+      await this.categoryRepository.deleteById(id);
+    } catch (error) {
+      console.error(`Error eliminando la categoría con ID ${id}:`, error);
+      throw new Error('No se pudo eliminar la categoría');
+    }
+  }
 }

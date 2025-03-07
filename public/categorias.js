@@ -1,4 +1,4 @@
-import { fetchCategories, addCategory } from "./productservice.js";
+import { fetchCategories, addCategory, deleteCategory } from "./productservice.js";
 
 async function renderCategories() {
     const categories = await fetchCategories();
@@ -7,10 +7,18 @@ async function renderCategories() {
 
     categories.forEach(({ ID, Nombre }) => {
         const li = document.createElement("li");
-        li.textContent = Nombre;
+        li.innerHTML = `
+            <span>${Nombre}</span>
+            <button class="delete-btn" onclick="deleteCategory(${ID})">❌</button>
+        `;
         categoryList.appendChild(li);
     });
 }
+
+window.deleteCategory = async function (id) {
+    await deleteCategory(id);
+    renderCategories();
+};
 
 document.getElementById("categoryForm").addEventListener("submit", async (e) => {
     e.preventDefault();
