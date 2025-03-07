@@ -26,7 +26,7 @@ export async function addProduct(Nombre, Precio, categoriaId) {
 
 export async function deleteProduct(id) {
     try {
-        await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+        await fetch(`${API_URL}/productos/${id}`, { method: "DELETE" });
     } catch (error) {
         console.error("Error eliminando producto:", error);
     }
