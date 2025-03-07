@@ -92,7 +92,7 @@ li {
 
 @font-face {
   font-family: 'SevenSegment';
-  src: url('/fonts/SevenSegment.ttf') format('truetype');
+  src: url('/public/fonts/SevenSegment.ttf') format('truetype');
 }
 .name {
   font-family: 'Inter', serif;
